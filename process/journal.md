@@ -52,3 +52,22 @@ Next tasks would be:
 
 - Write up the variations
 - Start prototyping the base case
+
+## 2025-08-26
+
+![](./images/journal/2025-08-26-notebook-1.jpg)
+
+![](./images/journal/2025-08-26-notebook-2.jpg)
+
+![](./images/journal/2025-08-26-notebook-3.jpg)
+
+![](./images/journal/2025-08-26-notebook-4.jpg)
+
+## And now, more (2025-09-08)
+
+Time has passed, but a while ago (26th of August) I went to Noble to come up with more variations to get me to 100 and I succeeded. Only just getting these into the system now because that's the way things go sometimes bud. I fake-put them into a heading above that matches their location in time rather than when I'm adding them to the repo. Probably that makes sense.
+
+Anyway with 100 ideas in my pocket it's definitely time to create a mega-list and start editing that down toward what I'm actually going to build. Plus the base case, yes the base case, that will decide how a lot of those ideas interact with an actual material reality of code and base-level design decisions.
+
+
+
