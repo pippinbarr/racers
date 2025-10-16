@@ -11,7 +11,9 @@ class Preloader extends Phaser.Scene {
 
     // this.load.audio('move', [`assets/sounds/move.mp3`, `assets/sounds/move.ogg`, `assets/sounds/move.wav`]);
 
-    this.load.json('strings', `assets/json/${LANG}.json`);
+    // this.load.json('strings', `assets/json/${LANG}.json`);
+
+    this.load.image('car', 'assets/images/car.png');
 
     // Loading screen visuals
 
