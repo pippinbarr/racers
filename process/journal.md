@@ -69,5 +69,10 @@ Time has passed, but a while ago (26th of August) I went to Noble to come up wit
 
 Anyway with 100 ideas in my pocket it's definitely time to create a mega-list and start editing that down toward what I'm actually going to build. Plus the base case, yes the base case, that will decide how a lot of those ideas interact with an actual material reality of code and base-level design decisions.
 
+## Shall we begin? (2025-10-16)
 
+Spent a little time sitting on the bed drawing a single notebook page of thinking. it's very similar to my original sketch but I tried to engage with some of the main "technical" questions in this one in an effort to convince myself to just start.
 
+![](./images/journal/2025-10-16-notebook-1.jpg)
+
+So let me... just start. I'm just going to start. I will put at least one thing on the screen.
