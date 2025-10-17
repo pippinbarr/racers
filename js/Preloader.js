@@ -14,6 +14,7 @@ class Preloader extends Phaser.Scene {
     // this.load.json('strings', `assets/json/${LANG}.json`);
 
     this.load.image('car', 'assets/images/car.png');
+    this.load.image('road-mark', 'assets/images/road-mark.png');
 
     // Loading screen visuals
 
