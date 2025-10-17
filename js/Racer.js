@@ -54,6 +54,17 @@ class Racer extends Phaser.Scene {
         this.dividersGroup = this.physics.add.group();
         this.addRoadMarks(1, this.dividersGroup);
         this.addRoadMarks(2, this.dividersGroup);
+
+        // Play clicking for engine noise
+        this.playerEngineSFX = this.sound.add('click');
+        this.playerEngineSFX.loop = true;
+        this.playerEngineSFX.setVolume(0.2);
+        this.playerEngineSFX.play();
+
+        this.opponentEngineSFX = this.sound.add('click');
+        this.opponentEngineSFX.loop = true;
+        this.opponentEngineSFX.setVolume(0);
+        this.opponentEngineSFX.play();
     }
 
     /**
@@ -111,6 +122,16 @@ class Racer extends Phaser.Scene {
      */
     update() {
         super.update();
+
+        // Update opponent engine sound
+        // Get the vertical distance between opponent and player
+        const d = Phaser.Math.Distance.Between(0, this.player.y, 0, this.opponent.y);
+        // Convert to a percentage in 0..1
+        const dN = Phaser.Math.Percent(d, 0, this.height);
+        // Apply to volume and rate (and maybe detune)
+        this.opponentEngineSFX.setVolume((1 - dN) * 0.3);
+        // this.opponentEngineSFX.setDetune(dN * -1000);
+        this.opponentEngineSFX.setRate((1 - dN) * 15)
 
         // Wrapping road divider
         this.dividersGroup.getChildren().forEach((mark) => {
