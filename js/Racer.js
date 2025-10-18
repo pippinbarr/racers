@@ -59,11 +59,11 @@ class Racer extends Phaser.Scene {
         this.playerEngineSFX = this.sound.add('click');
         this.playerEngineSFX.loop = true;
         this.playerEngineSFX.setVolume(0.2);
-        this.playerEngineSFX.play();
+        // this.playerEngineSFX.play();
 
         this.opponentEngineSFX = this.sound.add('click');
         this.opponentEngineSFX.loop = true;
-        this.opponentEngineSFX.setVolume(0);
+        this.opponentEngineSFX.setVolume(1);
         this.opponentEngineSFX.play();
     }
 
@@ -124,14 +124,18 @@ class Racer extends Phaser.Scene {
         super.update();
 
         // Update opponent engine sound
+
         // Get the vertical distance between opponent and player
-        const d = Phaser.Math.Distance.Between(0, this.player.y, 0, this.opponent.y);
-        // Convert to a percentage in 0..1
-        const dN = Phaser.Math.Percent(d, 0, this.height);
-        // Apply to volume and rate (and maybe detune)
-        this.opponentEngineSFX.setVolume((1 - dN) * 0.3);
-        // this.opponentEngineSFX.setDetune(dN * -1000);
-        this.opponentEngineSFX.setRate((1 - dN) * 15)
+        const dy = Phaser.Math.Distance.Between(0, this.player.y, 0, this.opponent.y);
+        // Convert to a percentage in 0..1 (roughly normalized)
+        const dyN = Phaser.Math.Percent(dy, 0, this.height * 1.5)
+
+        // Apply distance to volume
+        this.opponentEngineSFX.setVolume((1 - dyN) * 1);
+        // A flat rate and detune but these could eventually be the kind of
+        // engine character of different cars if I wanted variation there
+        this.opponentEngineSFX.setRate(2);
+        this.opponentEngineSFX.setDetune(1200);
 
         // Wrapping road divider
         this.dividersGroup.getChildren().forEach((mark) => {
@@ -141,12 +145,12 @@ class Racer extends Phaser.Scene {
         });
 
         // Wrapping opponent car
-        if (this.opponent.y > this.height) {
+        if (this.opponent.y > this.height * 2) {
             // Get a new random lane
             const lane = Phaser.Math.Between(1, this.lanes);
             // Reposition on x and y to wrap to the new lane
             this.opponent.x = ((lane - 0.5) * this.laneWidth);
-            this.opponent.y = 0;
+            this.opponent.y = -this.height;
             // Get a random velocity on y
             this.opponent.setVelocity(0, Math.random() * this.pixelScale * 40 + this.pixelScale * 20);
         }
