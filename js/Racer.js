@@ -37,6 +37,12 @@ class Racer extends Phaser.Scene {
         // Make the world grey
         this.cameras.main.setBackgroundColor(0x777777);
 
+
+        // Make an opponent car
+        this.opponent = this.physics.add.sprite(this.width / 2 - this.laneWidth, 0, 'car')
+        this.opponent.setScale(this.pixelScale);
+        this.spawnCar();
+
         // Make a player car
         this.player = this.physics.add.sprite(this.width / 2, this.height * 0.8, 'car')
         this.player.setScale(this.pixelScale);
@@ -44,11 +50,6 @@ class Racer extends Phaser.Scene {
         this.player.lane = 2;
         // Controls how fast the lane markings move technically
         this.player.speed = this.pixelScale * 30;
-
-        // Make an opponent car
-        this.opponent = this.physics.add.sprite(this.width / 2 - this.laneWidth, 0, 'car')
-        this.opponent.setScale(this.pixelScale);
-        this.opponent.setVelocity(0, this.pixelScale * 40);
 
         // Make road markings
         this.dividersGroup = this.physics.add.group();
@@ -58,13 +59,21 @@ class Racer extends Phaser.Scene {
         // Play clicking for engine noise
         this.playerEngineSFX = this.sound.add('click');
         this.playerEngineSFX.loop = true;
-        this.playerEngineSFX.setVolume(0.2);
-        // this.playerEngineSFX.play();
+        this.playerEngineSFX.setVolume(0.3);
+        this.playerEngineSFX.setRate(2);
+        this.playerEngineSFX.setDetune(1000);
+        this.playerEngineSFX.play();
 
         this.opponentEngineSFX = this.sound.add('click');
         this.opponentEngineSFX.loop = true;
-        this.opponentEngineSFX.setVolume(1);
+        this.opponentEngineSFX.setVolume(0);
+        this.opponentEngineSFX.setRate(this.opponent.engine.rate);
+        this.opponentEngineSFX.setDetune(this.opponent.engine.detune);
         this.opponentEngineSFX.play();
+
+        // Check overlaps
+        this.physics.add.overlap(this.player, this.opponent, this.crash, null, this);
+
     }
 
     /**
@@ -77,6 +86,8 @@ class Racer extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys();
         // Listen for left
         this.cursors.left.on("down", () => {
+            // Don't move if you're crashed
+            if (this.player.crashed) return;
             // Don't go left if you're in the leftmost lane
             if (this.player.lane === 1) return;
             // Otherwise update lane and x position appropriately
@@ -85,10 +96,22 @@ class Racer extends Phaser.Scene {
         });
         // Same again for right
         this.cursors.right.on("down", () => {
+            if (this.player.crashed) return;
             if (this.player.lane === this.lanes) return;
             this.player.lane++;
             this.player.x += this.laneWidth;
         });
+        this.cursors.space.on("down", () => {
+            if (this.player.crashed) {
+                this.physics.resume();
+                this.sound.mute = false;
+                this.player.crashed = false;
+                this.player.setTint(0xffffff);
+                this.player.visible = true;
+                this.player.flashingTimer.remove();
+                this.spawnCar();
+            }
+        })
     }
 
     /**
@@ -128,14 +151,9 @@ class Racer extends Phaser.Scene {
         // Get the vertical distance between opponent and player
         const dy = Phaser.Math.Distance.Between(0, this.player.y, 0, this.opponent.y);
         // Convert to a percentage in 0..1 (roughly normalized)
-        const dyN = Phaser.Math.Percent(dy, 0, this.height * 1.5)
-
+        const dyN = Phaser.Math.Percent(dy, 0, this.height)
         // Apply distance to volume
         this.opponentEngineSFX.setVolume((1 - dyN) * 1);
-        // A flat rate and detune but these could eventually be the kind of
-        // engine character of different cars if I wanted variation there
-        this.opponentEngineSFX.setRate(2);
-        this.opponentEngineSFX.setDetune(1200);
 
         // Wrapping road divider
         this.dividersGroup.getChildren().forEach((mark) => {
@@ -144,15 +162,52 @@ class Racer extends Phaser.Scene {
             }
         });
 
-        // Wrapping opponent car
+        // Opponent goes out of range (behind player)
         if (this.opponent.y > this.height * 2) {
-            // Get a new random lane
-            const lane = Phaser.Math.Between(1, this.lanes);
-            // Reposition on x and y to wrap to the new lane
-            this.opponent.x = ((lane - 0.5) * this.laneWidth);
-            this.opponent.y = -this.height;
-            // Get a random velocity on y
-            this.opponent.setVelocity(0, Math.random() * this.pixelScale * 40 + this.pixelScale * 20);
+            // "Kill the engine"
+            this.opponentEngineSFX.setVolume(0);
+            // Delay and then send down a new car
+            // Currently just one at a time
+            this.time.addEvent({
+                delay: 2000,
+                callback: this.spawnCar(),
+                callbackScope: this,
+                loop: false
+            });
         }
+    }
+
+    /**
+     * Spawns a new car with random velocity, lane, and engine sounds
+     */
+    spawnCar() {
+        // Set a velocity for the opponent
+        this.opponent.setVelocity(0, this.pixelScale * (20 + Math.random() * 20));
+        // Set engine noise parameters for the opponent
+        // In a fancy world I suppose the engine sound could also be related to 
+        // relative speed compared to player?
+        this.opponent.engine = {
+            detune: 0 + Math.random() * 1000,
+            rate: 1 + Math.random() * 2
+        };
+        // Get a new random lane
+        const lane = Phaser.Math.Between(1, this.lanes);
+        // Reposition on x and y to wrap to the new lane
+        this.opponent.x = ((lane - 0.5) * this.laneWidth);
+        this.opponent.y = -this.height;
+        // Get a random velocity on y
+        this.opponent.setVelocity(0, Math.random() * this.pixelScale * 40 + this.pixelScale * 20);
+    }
+
+    crash(player, opponent) {
+        this.physics.pause();
+        this.player.setTint(0xff0000);
+        this.sound.mute = true;
+        this.player.crashed = true;
+        this.player.flashingTimer = this.time.addEvent({
+            delay: 250,
+            callback: () => { this.player.visible = !this.player.visible },
+            loop: true
+        })
     }
 }
