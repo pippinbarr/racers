@@ -58,14 +58,16 @@ class Racer extends Phaser.Scene {
         this.addRoadMarks(2, this.dividersGroup);
 
         // Play clicking for engine noise
-        this.playerEngineSFX = this.sound.add('click');
-        this.playerEngineSFX.loop = true;
-        this.playerEngineSFX.setVolume(0.1);
-        this.playerEngineSFX.setRate(2);
-        this.playerEngineSFX.setDetune(1000);
-        this.playerEngineSFX.play();
+        this.player.engineSFX = this.sound.add('click');
+        this.player.engineSFX.loop = true;
+        this.player.engineSFX.setVolume(0.1);
+        this.player.engineSFX.setRate(2);
+        this.player.engineSFX.setDetune(1000);
+        this.player.engineSFX.play();
 
-
+        // Crash sound
+        this.crashSFX = this.sound.add('crash');
+        this.crashSFX.setVolume(1);
 
         // Add a score to the screen
         this.player.scoreText = this.add.text(20, 20, this.player.score, {
@@ -132,6 +134,7 @@ class Racer extends Phaser.Scene {
                 this.physics.resume();
                 this.sound.mute = false;
                 this.player.crashed = false;
+                this.player.engineSFX.setVolume(0.1);
                 this.player.setTint(0xffffff);
                 this.player.visible = true;
                 this.player.flashingTimer.remove();
@@ -246,9 +249,13 @@ class Racer extends Phaser.Scene {
     }
 
     crash(player, opponent) {
+        this.crashSFX.play();
         this.physics.pause();
+        this.player.engineSFX.setVolume(0);
+        this.opponents.getChildren().forEach((opponent) => {
+            opponent.engineSFX.setVolume(0);
+        });
         this.player.setTint(0xff0000);
-        this.sound.mute = true;
         this.player.crashed = true;
         this.player.flashingTimer = this.time.addEvent({
             delay: 250,

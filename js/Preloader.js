@@ -10,6 +10,7 @@ class Preloader extends Phaser.Scene {
     this.load.bitmapFont('atari', 'assets/fonts/atari.png', 'assets/fonts/atari.xml');
 
     this.load.audio('click', [`assets/sounds/click.mp3`]);
+    this.load.audio('crash', [`assets/sounds/crash.wav`]);
 
     // this.load.json('strings', `assets/json/${LANG}.json`);
 

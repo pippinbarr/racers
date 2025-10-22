@@ -11,7 +11,7 @@
 
 *RACERS* is ...
 
-*RACERS* was created using [Phaser 3](https://phaser.io/).
+*RACERS* was created using [Phaser 3](https://phaser.io/). Some sound effects were created using [Bfxr](https://www.bfxr.net/).
 
 ## Press
 
