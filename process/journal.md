@@ -76,3 +76,9 @@ Spent a little time sitting on the bed drawing a single notebook page of thinkin
 ![](./images/journal/2025-10-16-notebook-1.jpg)
 
 So let me... just start. I'm just going to start. I will put at least one thing on the screen.
+
+## We have a game... (2025-10-22)
+
+Today (and last couple of days maybe?) I've got the base game to a point where it feels like a think you actually play instead of just an idea. I think most of the juice I have got used in the commit messages, but I think I'm close to being able to say that the base game can be "locked" without much more change. I want to figure out the difficulty stuff around making the game technically possible, and any balancing around speed-up, but I think that really the basics of the whole things are there now? I don't want to over complicated it, and I've tried to mostly write it in a modular enough way that expansions/changes "should" be easy? Actually I should break more stuff down into functions because that's often where the interventions need to happen.
+
+May not even be the worst idea to cast an eye over the variations with this implementation in mind to see if there are implementation details that would *support* variations? That could be one of the kind of research outcomes here?
