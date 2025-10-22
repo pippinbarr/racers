@@ -37,11 +37,10 @@ class Racer extends Phaser.Scene {
         // Make the world grey
         this.cameras.main.setBackgroundColor(0x777777);
 
+        // Set the current game speed
+        this.gameSpeed = 1;
 
-        // Make an opponent car
-        this.opponent = this.physics.add.sprite(this.width / 2 - this.laneWidth, 0, 'car');
-        this.opponent.setScale(this.pixelScale);
-        this.spawnCar();
+        this.createOpponents();
 
         // Make a player car
         this.player = this.physics.add.sprite(this.width / 2, this.height * 0.8, 'car')
@@ -66,13 +65,7 @@ class Racer extends Phaser.Scene {
         this.playerEngineSFX.setDetune(1000);
         this.playerEngineSFX.play();
 
-        // Same for the opponent... this needs to be more modular
-        this.opponentEngineSFX = this.sound.add('click');
-        this.opponentEngineSFX.loop = true;
-        this.opponentEngineSFX.setVolume(0);
-        this.opponentEngineSFX.setRate(this.opponent.engine.rate);
-        this.opponentEngineSFX.setDetune(this.opponent.engine.detune);
-        this.opponentEngineSFX.play();
+
 
         // Add a score to the screen
         this.player.scoreText = this.add.text(20, 20, this.player.score, {
@@ -82,8 +75,31 @@ class Racer extends Phaser.Scene {
         });
 
         // Check overlaps
-        this.physics.add.overlap(this.player, this.opponent, this.crash, null, this);
+        this.physics.add.overlap(this.player, this.opponents, this.crash, null, this);
+    }
 
+    /**
+     * Creates the number of opponents required to populate the racing world?
+     */
+    createOpponents() {
+        // Make an opponents group
+        this.opponents = this.physics.add.group();
+
+        for (let i = 0; i < this.lanes - 1; i++) {
+            // Make an opponent car
+            const opponent = this.opponents.create(0, 0, 'car')
+                .setScale(this.pixelScale);
+            this.resetOpponent(opponent);
+
+            // Same for the opponent... this needs to be more modular
+            opponent.engineSFX = this.sound.add('click');
+            opponent.engineSFX.loop = true;
+            opponent.engineSFX.setVolume(0);
+            opponent.engineSFX.setRate(opponent.engine.rate);
+            opponent.engineSFX.setDetune(opponent.engine.detune);
+            opponent.engineSFX.play();
+
+        }
     }
 
     /**
@@ -120,7 +136,10 @@ class Racer extends Phaser.Scene {
                 this.player.visible = true;
                 this.player.flashingTimer.remove();
                 this.player.score = 0;
-                this.spawnCar();
+                this.gameSpeed = 1;
+                this.opponents.getChildren().forEach((opponent) => {
+                    this.resetOpponent(opponent);
+                })
             }
         })
     }
@@ -165,12 +184,8 @@ class Racer extends Phaser.Scene {
         this.player.score += 1;
         this.player.scoreText.text = this.player.score;
 
-        // Get the vertical distance between opponent and player
-        const dy = Phaser.Math.Distance.Between(0, this.player.y, 0, this.opponent.y);
-        // Convert to a percentage in 0..1 (roughly normalized)
-        const dyN = Phaser.Math.Percent(dy, 0, this.height)
-        // Apply distance to volume
-        this.opponentEngineSFX.setVolume((1 - dyN) * 0.5);
+        // Increase game speed constantly (or should this be event driven?)
+        this.gameSpeed += 0.0001;
 
         // Wrapping road divider
         this.dividersGroup.getChildren().forEach((mark) => {
@@ -179,41 +194,55 @@ class Racer extends Phaser.Scene {
             }
         });
 
-        // Opponent goes out of range (behind player)
-        if (this.opponent.y > this.height * 2) {
-            // "Kill the engine"
-            this.opponentEngineSFX.setVolume(0);
-            // Delay and then send down a new car
-            // Currently just one at a time
-            this.time.addEvent({
-                delay: 2000,
-                callback: this.spawnCar(),
-                callbackScope: this,
-                loop: false
-            });
-        }
+        this.opponents.getChildren().forEach((opponent) => {
+            // Get the vertical distance between opponent and player
+            const dy = Phaser.Math.Distance.Between(0, this.player.y, 0, opponent.y);
+            // Convert to a percentage in 0..1 (roughly normalized)
+            const dyN = Phaser.Math.Percent(dy, 0, this.height)
+            // Apply distance to volume
+            opponent.engineSFX.setVolume((1 - dyN) * 0.5);
+
+            // Opponent goes out of range (behind player)
+            if (opponent.y > this.height * 2) {
+                // "Kill the engine"
+                opponent.engineSFX.setVolume(0);
+                // Delay and then send down a new car
+                // Currently just one at a time
+                this.time.addEvent({
+                    delay: 500,
+                    callback: this.resetOpponent,
+                    args: [opponent],
+                    callbackScope: this,
+                    loop: false
+                });
+            }
+        });
     }
 
     /**
      * Spawns a new car with random velocity, lane, and engine sounds
      */
-    spawnCar() {
+    resetOpponent(opponent) {
+        // Set a tint for the opponent
+        opponent.setTint(Phaser.Math.RND.pick([0xceeb87, 0x87ebce, 0xeb8787, 0xeb87ce]))
         // Set a velocity for the opponent
-        this.opponent.setVelocity(0, this.pixelScale * (20 + Math.random() * 20));
+        opponent.setVelocity(0, this.pixelScale * (20 + Math.random() * 20));
         // Set engine noise parameters for the opponent
         // In a fancy world I suppose the engine sound could also be related to 
         // relative speed compared to player?
-        this.opponent.engine = {
+        opponent.engine = {
             detune: 0 + Math.random() * 1000,
             rate: 1 + Math.random() * 2
         };
         // Get a new random lane
         const lane = Phaser.Math.Between(1, this.lanes);
         // Reposition on x and y to wrap to the new lane
-        this.opponent.x = ((lane - 0.5) * this.laneWidth);
-        this.opponent.y = -this.height;
+        opponent.x = ((lane - 0.5) * this.laneWidth);
+        opponent.y = -this.height;
         // Get a random velocity on y
-        this.opponent.setVelocity(0, Math.random() * this.pixelScale * 40 + this.pixelScale * 20);
+        const baseSpeed = (Math.random() * this.pixelScale * 40 + this.pixelScale * 20);
+        // Multiple actual speed by the game speed so we can speed it up
+        opponent.setVelocity(0, this.gameSpeed * baseSpeed);
     }
 
     crash(player, opponent) {
