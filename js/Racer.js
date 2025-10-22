@@ -39,7 +39,7 @@ class Racer extends Phaser.Scene {
 
 
         // Make an opponent car
-        this.opponent = this.physics.add.sprite(this.width / 2 - this.laneWidth, 0, 'car')
+        this.opponent = this.physics.add.sprite(this.width / 2 - this.laneWidth, 0, 'car');
         this.opponent.setScale(this.pixelScale);
         this.spawnCar();
 
@@ -50,6 +50,8 @@ class Racer extends Phaser.Scene {
         this.player.lane = 2;
         // Controls how fast the lane markings move technically
         this.player.speed = this.pixelScale * 30;
+        // Let's give the player a score, eh?
+        this.player.score = 0;
 
         // Make road markings
         this.dividersGroup = this.physics.add.group();
@@ -59,17 +61,25 @@ class Racer extends Phaser.Scene {
         // Play clicking for engine noise
         this.playerEngineSFX = this.sound.add('click');
         this.playerEngineSFX.loop = true;
-        this.playerEngineSFX.setVolume(0.3);
+        this.playerEngineSFX.setVolume(0.1);
         this.playerEngineSFX.setRate(2);
         this.playerEngineSFX.setDetune(1000);
         this.playerEngineSFX.play();
 
+        // Same for the opponent... this needs to be more modular
         this.opponentEngineSFX = this.sound.add('click');
         this.opponentEngineSFX.loop = true;
         this.opponentEngineSFX.setVolume(0);
         this.opponentEngineSFX.setRate(this.opponent.engine.rate);
         this.opponentEngineSFX.setDetune(this.opponent.engine.detune);
         this.opponentEngineSFX.play();
+
+        // Add a score to the screen
+        this.player.scoreText = this.add.text(20, 20, this.player.score, {
+            font: "32px Commodore",
+            color: "#ff0",
+            align: "left",
+        });
 
         // Check overlaps
         this.physics.add.overlap(this.player, this.opponent, this.crash, null, this);
@@ -109,6 +119,7 @@ class Racer extends Phaser.Scene {
                 this.player.setTint(0xffffff);
                 this.player.visible = true;
                 this.player.flashingTimer.remove();
+                this.player.score = 0;
                 this.spawnCar();
             }
         })
@@ -146,14 +157,20 @@ class Racer extends Phaser.Scene {
     update() {
         super.update();
 
-        // Update opponent engine sound
+        if (this.player.crashed) {
+            return;
+        }
+
+        // Increase player score
+        this.player.score += 1;
+        this.player.scoreText.text = this.player.score;
 
         // Get the vertical distance between opponent and player
         const dy = Phaser.Math.Distance.Between(0, this.player.y, 0, this.opponent.y);
         // Convert to a percentage in 0..1 (roughly normalized)
         const dyN = Phaser.Math.Percent(dy, 0, this.height)
         // Apply distance to volume
-        this.opponentEngineSFX.setVolume((1 - dyN) * 1);
+        this.opponentEngineSFX.setVolume((1 - dyN) * 0.5);
 
         // Wrapping road divider
         this.dividersGroup.getChildren().forEach((mark) => {
