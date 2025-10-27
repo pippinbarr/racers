@@ -20,18 +20,26 @@ class Racer extends Phaser.Scene {
 
         // Default number of lanes
         this.lanes = 3;
+
+        // Default number of opponents
+        this.numOpponents = 2;
+
+        // Lane handling numbers
+        this.laneWidth = this.width / this.lanes;
+
+        // The overall scaling factor (since graphics are drawn at a nice
+        // chunky pixel scale)
+        this.pixelScale = 16;
+
+        // Default car sprite
+        this.carSprite = 'car';
     }
 
     /**
      * Sets up input, the track, the cars
      */
     create() {
-        // Lane handling numbers
-        this.laneWidth = this.width / this.lanes;
 
-        // The overall scaling factor (since graphics are drawn at a nice
-        // chunky pixel scale)
-        this.pixelScale = 1 / (this.lanes - 1) * 32;
 
         // Input
         this.setupInput();
@@ -48,11 +56,14 @@ class Racer extends Phaser.Scene {
         // Make a player car
         this.createPlayer();
 
-        // Make road markings
+        // Make road dividers
         this.dividersGroup = this.physics.add.group();
         for (let i = 0; i < this.lanes - 1; i++) {
             this.addRoadMarks(i + 1, this.dividersGroup);
         }
+
+        // Make road edges
+        this.createEdges();
 
         // Crash sound
         this.crashSFX = this.sound.add('crash');
@@ -76,24 +87,31 @@ class Racer extends Phaser.Scene {
         // Make an opponents group
         this.opponents = this.physics.add.group();
 
-        for (let i = 0; i < this.lanes - 1; i++) {
+        for (let i = 0; i < this.numOpponents; i++) {
             // Make an opponent car
-            const opponent = this.opponents.create(0, 0, 'car')
-                .setScale(this.pixelScale);
-            this.setupOpponent(opponent);
-
-            // Same for the opponent... this needs to be more modular
-            opponent.engineSFX = this.sound.add('click');
-            opponent.engineSFX.loop = true;
-            opponent.engineSFX.setVolume(0);
-            opponent.engineSFX.setRate(opponent.engine.rate);
-            opponent.engineSFX.setDetune(opponent.engine.detune);
-            opponent.engineSFX.play();
+            this.createOpponent(this.carSprite, this.opponents);
         }
     }
 
+    createOpponent(sprite, group) {
+        const opponent = group.create(0, 0, sprite);
+        opponent.setScale(this.pixelScale);
+
+        this.setupOpponent(opponent);
+
+        // Same for the opponent... this needs to be more modular
+        opponent.engineSFX = this.sound.add('click');
+        opponent.engineSFX.loop = true;
+        opponent.engineSFX.setVolume(0);
+        opponent.engineSFX.setRate(opponent.engine.rate);
+        opponent.engineSFX.setDetune(opponent.engine.detune);
+        opponent.engineSFX.play();
+
+        return opponent;
+    }
+
     createPlayer() {
-        this.player = this.physics.add.sprite(0, 0, 'car')
+        this.player = this.physics.add.sprite(0, 0, this.carSprite)
         this.player.setScale(this.pixelScale);
         // Starting lane
         this.player.lane = Math.floor(this.lanes / 2);
@@ -114,6 +132,17 @@ class Racer extends Phaser.Scene {
         this.player.engineSFX.setRate(2);
         this.player.engineSFX.setDetune(1000);
         this.player.engineSFX.play();
+    }
+
+    /**
+     * Creates the edge marker on either side (potentialy could crash into it?)
+     */
+    createEdge() {
+        this.edges = this.physics.add.group();
+        this.edges.create(0, this.height / 2, 'road-mark')
+            .setScale(this.pixelScale, this.height);
+        this.edges.create(this.width, this.height / 2, 'road-mark')
+            .setScale(this.pixelScale, this.height);
     }
 
     /**
