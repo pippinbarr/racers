@@ -10,6 +10,7 @@
 
 - Revisit opponent placement and speed relationship (should I limit all opponents to the same speed to avoid impossible scenarios?)
 - Try more than lanes-1 opponents, but making sure to assign them always to at most n-1 of the n lanes? (How to track where the assignments are?)
+- Try fast-tweened lane changing (and interrupts? maybe not)
 
 ### Graphics
 - ~~Add different colours for opponents for visual wonderment~~
