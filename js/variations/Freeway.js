@@ -8,7 +8,7 @@ class Freeway extends Racer {
         this.pixelScale = 1;
         this.lanes = this.width / this.laneWidth;
 
-        this.numOpponents = 100;
+        this.numOpponents = 1000;
     }
 
     /**

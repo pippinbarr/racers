@@ -117,7 +117,7 @@ class Racer extends Phaser.Scene {
         this.player.lane = Math.floor(this.lanes / 2);
 
         const playerX = -this.laneWidth * 0.5 + this.player.lane * this.laneWidth;
-        const playerY = this.height * 0.8;
+        const playerY = this.height - this.player.displayHeight * 0.75;
         this.player.setPosition(playerX, playerY);
 
         // Controls how fast the lane markings move technically
@@ -137,7 +137,7 @@ class Racer extends Phaser.Scene {
     /**
      * Creates the edge marker on either side (potentialy could crash into it?)
      */
-    createEdge() {
+    createEdges() {
         this.edges = this.physics.add.group();
         this.edges.create(0, this.height / 2, 'road-mark')
             .setScale(this.pixelScale, this.height);
@@ -248,7 +248,7 @@ class Racer extends Phaser.Scene {
             opponent.engineSFX.setVolume((1 - dyN) * 0.5);
 
             // Opponent goes out of range (behind player)
-            if (opponent.y > this.height * 2) {
+            if (opponent.y > this.height * 1) {
                 // "Kill the engine"
                 opponent.engineSFX.setVolume(0);
                 // Delay and then send down a new car
@@ -270,8 +270,6 @@ class Racer extends Phaser.Scene {
     setupOpponent(opponent) {
         // Set a tint for the opponent
         opponent.setTint(Phaser.Math.RND.pick([0xceeb87, 0x87ebce, 0xeb8787, 0xeb87ce]))
-        // Set a velocity for the opponent
-        opponent.setVelocity(0, this.pixelScale * (20 + Math.random() * 20));
         // Set engine noise parameters for the opponent
         // In a fancy world I suppose the engine sound could also be related to 
         // relative speed compared to player?
@@ -283,11 +281,15 @@ class Racer extends Phaser.Scene {
         const lane = Phaser.Math.Between(1, this.lanes);
         // Reposition on x and y to wrap to the new lane
         opponent.x = ((lane - 0.5) * this.laneWidth);
-        opponent.y = -this.height;
+        opponent.y = -opponent.displayHeight;
         // Get a random velocity on y
-        const baseSpeed = (Math.random() * this.pixelScale * 40 + this.pixelScale * 20);
+        const relativeSize = opponent.displayHeight / this.height;
+        const baseSpeed = this.gameSpeed * relativeSize * 4000;
+
+        // console.log(baseVelocity);
+        // const baseSpeed = (Math.random() * this.pixelScale * 40 + this.pixelScale * 20);
         // Multiple actual speed by the game speed so we can speed it up
-        opponent.setVelocity(0, this.gameSpeed * baseSpeed);
+        opponent.setVelocity(0, baseSpeed + (0.2 - Math.random() * 0.4) * baseSpeed);
     }
 
     crash(player, opponent) {
