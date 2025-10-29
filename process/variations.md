@@ -54,6 +54,19 @@ You're a ghost car, can't crash, har har. Oh and there's the idea you *can* swit
 
 I see I wrote "get to heaven" as a potential secret objective... heh.
 
+### 2025-10-29
+
+Implementation going well here, but need to make a decision on that question of what there is outside the three lanes. Initial ideas:
+
+- A random deluge of artifacts from the rest of the game pelting down the screen (to continue to give you the sense of motion?)
+- Or similarly just some sense of driving through the hidden landscape of this game itself, different scenes and roads with different things happening?
+- Other ghost cars, maybe going in all directions? Why though?
+- Some sort of more explicit ghosty thing like angel cars or whatever.. I can tell this is stupid though
+- Something more ambiguous and abstract ala 2001 light show or something? Representation of the impossible-to-represent afterlife?
+- Is it the afterlife or you're a ghost in the world repeating the patterns you knew from before?
+- Which points back to the idea of it being a kind of behind the scenes of the game?
+- Why is this a bulleted list?
+
 ## High Definition
 
 Sub in "awesome graphics" for everything... is that interesting or just stupid though? I can't quite tell if it's worth it, so I should probably prototype it and see.
@@ -86,4 +99,104 @@ The whole thing takes care of its self, getting arbitrarily fast like Zorba. Act
 
 The same game but just the extra bits to be able to sing as you drive. MIDI plus the words plus the bouncing ball (which implies timing which is scary). Funny if it's *not* a well known song? Funny if it's My Way or some other classic bombastic karaoke song? How to synchronize?
 
---- to time bomb/speed
+## Speed Racer
+
+(Good joke, Pips.) You have to maintain a specific speed or the car explodes. Except that requires the idea of speed and maintaining it. Felix was part of this idea as it notes in the notebook. Oddly for a game called Racers there's not actually that much attention to speed here... there's a speed and you dodge at that speed and it increased?
+
+I can add an acceleration idea with "up" and "down" to change it but... I dunno how to represent that almost? How it will feel etc.? I can do it but my brain doesn't instantly say "yeah definitely do that"?
+
+Is there a way of saving the idea then? Not really to the extent the stress was about driving at a speed and not slowing down which is *already* the case. And blowing up is not significantly different to just crashing which is the only way you change speed in the game right now? So...
+
+What... just a cinematic recasting of the way the game already is? That's not unfunny?
+
+This fits in with this whole question of positioning and I note that I'm continuing to imagine some sort of opening and closing cinematic, so that could work as a sort of intensification of play and an explanation of why you have no speed controls in the first place - Judo! (As in I flipped the concept using its own momentum.)
+
+## Roulette Racer
+
+As in "Russian Roulette" where you have some time limit (I suppose) to choose a lane, and then it fires a car down at you way too fast to dodge. Such that the race kind of becomes almost turn based? A bit unclear how scoring/progress works? Presumably you just die at some point and... is that interesting? Or best not to overthink it... prototype the basic structure and then see where the feels lead.
+
+## World Tour
+
+The idea of racing in different locations. Another cinematics opportunity to just establish "oh, now you're in Morocco" "now you're in Slovakia." Included the idea that you go past national borders literally on the track.
+
+But again there's the cinematics opportunity/option here where it sets up that you're racing in a different location (each time you load the game?)? This is again sort of trading on that same Speed idea above of setting contexts to the same actual play (ala SNAKISMS 2).
+
+I can't make that "joke" too many times but it's worth it a couple of times, it's always worth it, that idea is never "solved" right? The idea that context and setup matters?
+
+## ~~Racing Mower~~
+
+You're mowing...? Kinda weak, no?
+
+## Skateboard Racer
+
+The car is a skateboard and you can do kickflips and other tricks. So you can kind of jump up and then spin the car/board in the two directions before you land. Landing tricks, landing tricks over cars, ... sounds kiiind of fun? Up to jump and left/right/up/down to trigger tricks?
+
+Tricks would be announced in some way on screen, sound effect, points, etc. But still also racing. Could end up landing on another car and wiping out. 
+
+Rail slides? Stair sets? Sounds kind of fun... ? A totally linear top down skating experience.
+
+## ~~DDR~~
+
+Can't quite visualize this being good.
+
+## Stunt Racer
+
+You have some sort of specific objective to pull off a stunt. Race past the two cars then crash into the bus, say. Procedural students? I wonder what range of expressivity of stunts we can get into this base game? Do I say "expressivity" too much?
+
+I like the idea of a structured and repeatable sequence though I think there's something there. Weaving through traffic in a specific way, crashing into a particular thing, etc. Maybe even just triggering a big explosion.
+
+## Shit Racer
+
+Because there has to be one. But also as I noted in the notebook I don't know how to do it really. The issue of shit permanence because you're moving forward in the world. It could build up on the front of your car? Cars shit and if you hit the shit it builds up and on you and becomes part of your car?
+
+I mean I can just wrestle shit into the game, right, and it's just there because it has to be? Most obviously the other cars shit and it causes trouble. The trouble would either be you spin out on it, or it accumulates on your car and maybe changes your hitbox?
+
+## Climate Change
+
+A sort of "straightforward" serious game about climate change/pollution through the lens of the racer (cars cause pollution y'know). "Just" various effects that accumulate over time? A pollution fog, a rising water level encroaching on the track, ... something something heat and extreme weather, ... something...
+
+Clearly I don't really understand this. Smog makes the most sense and is easy to think about, the fog of war. Deserves through as I do think it's a fun idea. Water levels are more interesting and make me think of that game (via Robert?) where you could go to the future and see how everything is covered in water.
+
+Maybe stages at different times where it's smoggy, then hurricanes all the time, then just covered in water, ...? Cars visible sunken beneath the water in the apocalypse?
+
+## ~~Smog of War~~
+
+Well that's just a continuation of the above... could be distinguished or not... maybe not that interesting because it doesn't really go anywhere?
+
+## ~~Quantum Racer~~
+
+This was the idea of playing out all possibilities, but without acceleration I don't think there's enough information to both... it would just be ghost cars in each lane and... nothing much else? Can rethink a bit but doesn't sound like it works.
+
+## First Person Racer
+
+I like the idea of this, kind of a model-view-controller thing where I figure out how to represent the same idea in perspective? But it also sounds really stupidly hard and maybe in the end not very rewarding? Unless I play with "first person" a bit more and it's about leaning into the "I"-ness of the first person?
+
+## Silent Movie
+
+Mostly the idea of grainy black and white, a vignette, and interstitial texts that say funny/stupid things mostly drawn aesthetically from, say, Buster Keaton and Charlie Chaplin films? I think I like the idea of it... recasting the game as a sequence from a slapstick comedy?
+
+## Drum Machine / Music Maker
+
+Turn it into a music thing. Move on a grid/sequence and pick up instruments/drum sounds that accumulate into the music? How would this interact with the other cars? They could contribute sounds too actually, drones maybe, according to lane or just car type.
+
+There's probably something to this.
+
+## Op Racer
+
+When you crash the other car goes flies off the screen dramatically, spinning and exploding. Fun and havoc.
+
+## Wrap Wracer
+
+When you go off the left you come on the right etc. And that's it. Perfectly fine.
+
+## Sheep Crossing
+
+Sheep cross and you have to stop for them. Without speed controls this would have to happen automatically and that is... maybe funnier? Then you CANNOT hit the sheep, you should screech to a halt, they go by, and then you take off again. Pretty good.
+
+## The Open Road
+
+No other cars. Har.
+
+---
+
+Up to rainy day
