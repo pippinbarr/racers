@@ -24,6 +24,7 @@ let config = {
     pixelArt: true,
   },
   pixelArt: true,
+  zoom: 1,
   physics: {
     default: 'arcade',
     arcade: {
@@ -31,8 +32,8 @@ let config = {
     }
   },
   scale: {
-    mode: Phaser.Scale.FIT,
-    autoCenter: Phaser.Scale.BOTH,
+    // mode: Phaser.Scale.FIT,
+    // autoCenter: Phaser.Scale.BOTH,
     width: WIDTH,
     height: HEIGHT,
   },

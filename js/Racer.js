@@ -62,6 +62,15 @@ class Racer extends Phaser.Scene {
             this.addRoadMarks(i + 1, this.dividersGroup);
         }
 
+        // const stepY = this.pixelScale * 4;
+        // for (let x = 0; x < this.width; x += this.laneWidth) {
+        //     for (let y = 0; y < this.height; y += stepY) {
+        //         const mark = this.dividersGroup.create(x, y, 'road-mark');
+        //         mark.setScale(this.pixelScale);
+        //         console.log(x, y)
+        //     }
+        // }
+
         // Make road edges
         this.createEdges();
 
@@ -220,7 +229,7 @@ class Racer extends Phaser.Scene {
             setScale: {
                 x: this.pixelScale,
                 y: this.pixelScale
-            }
+            },
         });
         // Make the markings move according to the player's speed
         group.setVelocity(0, this.player.speed);
