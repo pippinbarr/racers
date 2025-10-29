@@ -2,15 +2,23 @@
 
 Well, we need an official list and musing on how they would work right? For now I'll suck in the ones from the notebook that seem immediately fun to do, so this is a curation pass. 
 
-## Racer
+## Racer (Codename: [Racer](../&v=racer))
 
 This is the default. It's still a bit under construction but is essentially a three-lane racer with opponents coming down the screen (because you're faster than them technically) and you have to avoid them with a time-based scoring system.
 
 (Question: do I want lane changes to be tweened? I should try it out. Even a very fast tween might look nice. What about changing lanes mid-tween - get it? Changing horses mid stream? You don't. I mean you don't do it.)
 
-## Gridlock
+### 2025-10-29
+
+Very late but obviously I have a decent working version up.
+
+## Gridlock (Codename: [Gridlock](./&v=gridlock))
 
 Just fill the entire field with cars that don't move. The player is in there in the usual place but if they move left or right they die (kind of weird to move while stopped? But maybe it's funny to have that little agency?)
+
+### 2025-10-29
+
+Basic thing works. I need to think about whether to have lane changes and how they might work if I did (since they can only reasonably occur while the traffic is actually moving which creates some annoyances? Like what happens if you're partway through a lane change when the traffic stops again for instance.)
 
 ## Two hour commute
 
@@ -44,11 +52,15 @@ No cars? Just pickups in the three lanes that play a song. We might want eight l
 
 Same game but the cars come pointing at you and fast, you inevitably will crash I suppose?
 
-## Freeway / n-lane racer
+## Freeway / n-lane racer (Codename: [Freeway](../&v=freeway))
 
 Well I've already built the first version of that. Open question on making it single pixel scale though... I think it's worth trying.
 
-## Ghost racer
+### 2025-10-29
+
+Late here too, but I do have a working version of this, although I intend to pursue the single-pixel version.
+
+## Ghost racer (Codename: [Ghost](../&v=ghost))
 
 You're a ghost car, can't crash, har har. Oh and there's the idea you *can* switch lanes to left and right and... see something else, some ghostly world outside the game, that would be really neat right? I quite love it... could come into view in a fun way too... actually especially with tweening... hmmm, this is a better one than I'd thought. Reminders obviously of Ghost Pong but also of Jostle Parent.
 

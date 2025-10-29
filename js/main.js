@@ -1,5 +1,7 @@
+const urlParams = new URLSearchParams(window.location.search);
+
 const DEBUG = false;
-const START_SCENE = "ghost";
+const START_SCENE = urlParams.get('v') || "racer";
 const WIDTH = 480;
 const HEIGHT = 720;
 const LANG = "en";
@@ -15,7 +17,8 @@ let config = {
     Racer,
 
     Freeway,
-    Ghost
+    Ghost,
+    Gridlock,
   ],
   render: {
     pixelArt: true,

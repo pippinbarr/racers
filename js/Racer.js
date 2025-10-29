@@ -50,11 +50,11 @@ class Racer extends Phaser.Scene {
         // Set the current game speed
         this.gameSpeed = 1;
 
-        // Create the opponent cars
-        this.createOpponents();
-
         // Make a player car
         this.createPlayer();
+
+        // Create the opponent cars
+        this.createOpponents();
 
         // Make road dividers
         this.dividersGroup = this.physics.add.group();
@@ -241,9 +241,7 @@ class Racer extends Phaser.Scene {
             return;
         }
 
-        // Increase player score
-        this.player.score += 1;
-        this.player.scoreText.text = this.player.score;
+        this.updateScore();
 
         // Increase game speed constantly (or should this be event driven?)
         this.gameSpeed += 0.0001;
@@ -278,6 +276,12 @@ class Racer extends Phaser.Scene {
                 });
             }
         });
+    }
+
+    updateScore() {
+        // Increase player score
+        this.player.score += 1;
+        this.player.scoreText.text = this.player.score;
     }
 
     /**
