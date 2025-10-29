@@ -1,5 +1,5 @@
 const DEBUG = false;
-const START_SCENE = "freeway";
+const START_SCENE = "ghost";
 const WIDTH = 480;
 const HEIGHT = 720;
 const LANG = "en";
@@ -13,7 +13,9 @@ let config = {
     Boot,
     Preloader,
     Racer,
-    Freeway
+
+    Freeway,
+    Ghost
   ],
   render: {
     pixelArt: true,

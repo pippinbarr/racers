@@ -76,8 +76,7 @@ class Racer extends Phaser.Scene {
             align: "left",
         });
 
-        // Check overlaps for crashes
-        this.physics.add.overlap(this.player, this.opponents, this.crash, null, this);
+        this.setupCrashes();
     }
 
     /**
@@ -114,7 +113,7 @@ class Racer extends Phaser.Scene {
         this.player = this.physics.add.sprite(0, 0, this.carSprite)
         this.player.setScale(this.pixelScale);
         // Starting lane
-        this.player.lane = Math.floor(this.lanes / 2);
+        this.player.lane = Math.ceil(this.lanes / 2);
 
         const playerX = -this.laneWidth * 0.5 + this.player.lane * this.laneWidth;
         const playerY = this.height - this.player.displayHeight * 0.75;
@@ -155,20 +154,12 @@ class Racer extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys();
         // Listen for left
         this.cursors.left.on("down", () => {
-            // Don't move if you're crashed
-            if (this.player.crashed) return;
-            // Don't go left if you're in the leftmost lane
-            if (this.player.lane === 1) return;
-            // Otherwise update lane and x position appropriately
-            this.player.lane--;
-            this.player.x -= this.laneWidth;
+            this.handleLaneChange(-1);
         });
         // Same again for right
         this.cursors.right.on("down", () => {
-            if (this.player.crashed) return;
-            if (this.player.lane === this.lanes) return;
-            this.player.lane++;
-            this.player.x += this.laneWidth;
+            this.handleLaneChange(1);
+
         });
         this.cursors.space.on("down", () => {
             if (this.player.crashed) {
@@ -186,6 +177,26 @@ class Racer extends Phaser.Scene {
                 })
             }
         })
+    }
+
+    handleLaneChange(direction) {
+        // Check legality
+        if (this.isIllegalMove(direction)) return;
+        // Move with a tween
+        this.player.tween = this.tweens.add({
+            targets: this.player,
+            x: this.player.x + (direction * this.laneWidth),
+            duration: 100,
+            onComplete: () => {
+                this.player.lane += direction;
+                this.player.tween = null;
+            }
+        });
+    }
+
+    isIllegalMove(direction) {
+        const targetLane = this.player.lane + direction;
+        return (this.player.tween || this.player.crashed || targetLane < 1 || targetLane > this.lanes);
     }
 
     /**
@@ -213,6 +224,11 @@ class Racer extends Phaser.Scene {
         });
         // Make the markings move according to the player's speed
         group.setVelocity(0, this.player.speed);
+    }
+
+    setupCrashes() {
+        // Check overlaps for crashes
+        this.physics.add.overlap(this.player, this.opponents, this.crash, null, this);
     }
 
     /**
