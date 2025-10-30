@@ -1,3 +1,13 @@
+/**
+ * Panic buttons at the side of the road?
+ * (There's other stuff alongside the highway)
+ * Eco/litter pickup zones
+ * Roadkill ghosts?
+ * Double-die and get respawned back onto the road (fade out?)
+ * Car cemetery along the sides of the road -- and maybe another road further across
+ * (Another variation: Autobahn?)
+ */
+
 class Ghost extends Racer {
     constructor(config) {
         super({
