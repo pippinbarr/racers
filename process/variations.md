@@ -20,6 +20,10 @@ Just fill the entire field with cars that don't move. The player is in there in 
 
 Basic thing works. I need to think about whether to have lane changes and how they might work if I did (since they can only reasonably occur while the traffic is actually moving which creates some annoyances? Like what happens if you're partway through a lane change when the traffic stops again for instance.)
 
+### 2025-10-30
+
+More complex thing works. Lane changing at very low speed can happen. If you're partway through the change you just stop and have to keep trying. You can crash. In writing this commit I realized it would be funny to have horns. We need horns.
+
 ## Two hour commute
 
 The standard game with a clock counting down the distance. A building on screen somewhere, and a house at the end. Very Desert Bus I suppose. A little animation of a little person getting into the car from the building? An intertistial/"cut-scene"... maybe that's funnier in a weird way? And then it just cuts to the exact usual game... kind of like that.
