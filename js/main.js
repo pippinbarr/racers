@@ -19,6 +19,7 @@ let config = {
     Freeway,
     Ghost,
     Gridlock,
+    OneLaneRoad,
   ],
   render: {
     pixelArt: true,
