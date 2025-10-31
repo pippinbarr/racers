@@ -32,6 +32,12 @@ The standard game with a clock counting down the distance. A building on screen 
 
 There's only one lane. Unclear how to handle opponents in this case? I guess they could drift back and match your speed and drift back up again? Just for visual interest? Or just one person in front of you really drifting back and forth but never actually hitting you. No steering involved (can you crash into the side?)
 
+### 2025-10-30
+
+Got the basics going here and it's pretty nice. Solved the questions above with a drifty other car that never hits you + you can move in the lane but never hit the sides.
+
+Just need to work on the visuals a bit, maybe trees along the sides.
+
 ## Low speed chase(r)
 
 Three police cars across the lanes behind you (or six?) and just open road in front of you. Do you eventually run out of gas? It counts down and eventually the whole thing just stops and you get arrested.
@@ -55,6 +61,10 @@ No cars? Just pickups in the three lanes that play a song. We might want eight l
 ## You're going the wrong way
 
 Same game but the cars come pointing at you and fast, you inevitably will crash I suppose?
+
+### 2025-10-31
+
+This one basically works. Feels like maybe the opponents should be delayed a bit for it to be funnier? I made the score go down rather than up which I think is a nice touch personally.
 
 ## Freeway / n-lane racer (Codename: [Freeway](../&v=freeway))
 

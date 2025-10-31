@@ -329,6 +329,10 @@ class Racer extends Phaser.Scene {
             opponent.engineSFX.setVolume(0);
         });
         this.player.setTint(0xff0000);
+        if (this.player.tween) {
+            this.player.tween.stop();
+            this.player.tween = null;
+        }
         this.player.crashed = true;
         this.player.flashingTimer = this.time.addEvent({
             delay: 250,

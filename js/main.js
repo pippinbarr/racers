@@ -20,6 +20,7 @@ let config = {
     Ghost,
     Gridlock,
     OneLaneRoad,
+    WrongWay,
   ],
   render: {
     pixelArt: true,
