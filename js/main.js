@@ -16,6 +16,7 @@ let config = {
     Preloader,
     Racer,
 
+    AnimalCrossing,
     Freeway,
     Ghost,
     Gridlock,

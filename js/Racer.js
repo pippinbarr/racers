@@ -129,7 +129,8 @@ class Racer extends Phaser.Scene {
         this.player.setPosition(playerX, playerY);
 
         // Controls how fast the lane markings move technically
-        this.player.speed = this.pixelScale * 30;
+        this.player.maxSpeed = this.pixelScale * 30;
+        this.player.speed = this.player.maxSpeed;
         // Let's give the player a score, eh?
         this.player.score = 0;
 
@@ -250,6 +251,8 @@ class Racer extends Phaser.Scene {
             return;
         }
 
+        this.dividersGroup.setVelocity(0, this.player.speed);
+
         this.updateScore();
 
         // Increase game speed constantly (or should this be event driven?)
@@ -288,6 +291,7 @@ class Racer extends Phaser.Scene {
     }
 
     updateScore() {
+        if (this.player.speed === 0) return;
         // Increase player score
         this.player.score += 1;
         this.player.scoreText.text = this.player.score;
