@@ -2,6 +2,19 @@
 
 Well, we need an official list and musing on how they would work right? For now I'll suck in the ones from the notebook that seem immediately fun to do, so this is a curation pass. 
 
+## Implemented (at least in part)
+
+- Racer
+
+- Animal Crossing
+- Drag
+- Freeway
+- Ghost
+- Gridlock
+- One lane road
+- OP
+- Wrong way
+
 ## Racer (Codename: [Racer](../&v=racer))
 
 This is the default. It's still a bit under construction but is essentially a three-lane racer with opponents coming down the screen (because you're faster than them technically) and you have to avoid them with a time-based scoring system.
@@ -49,6 +62,15 @@ The more there are these endings (see two hour commute) the more I'll need a con
 You'd need a specific input to "go" which could be "up" (swipe up) so that would work (opens up questions about changing speed in general? Which... I just don't know how I feel about it tbh). But anyway you need to hit "go" at the right moment and that's it you either win or you don't... or maybe it's worse than that and there's just a huge chance element? 
 
 Parachute comes out, someone is declared a winner. Parachute could be in the ending animation if I'm going all in on that. I can sense it becoming part of the vision.
+
+### 2025-11-02
+
+Basic version is in place and already quite satisfying. As noted in the commit, things to think about adding are
+
+- Parachute in live mode versus a cut scene
+- A finish line that passes by (triggering parachute)
+- Cars slowing down after the finish line
+- Random misfortunes like blowing up at the line, spinning off the track, speed hiccup somewhere during the race
 
 ## Track and race
 
@@ -210,6 +232,10 @@ There's probably something to this.
 ## OP Racer
 
 When you crash the other car goes flies off the screen dramatically, spinning and exploding. Fun and havoc.
+
+### 2025-11-02
+
+Initial version is in place. Works pretty well.
 
 ## Wrap Wracer
 

@@ -7,10 +7,12 @@
 
 ## More or less up to date list of playable versions
 - [Animal Crossing](./&v=animalcrossing)
+- [Drag](./&v=drag)
 - [Freeway](./&v=freeway)
 - [Ghost](./&v=ghost)
 - [Gridlock](./&v=gridlock)
 - [One Lane Road](./&v=onelandroad)
+- [OP](./&v=op)
 - [Wrong Way](./&v=wrongway)
 
 ## Description

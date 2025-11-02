@@ -169,7 +169,6 @@ class Racer extends Phaser.Scene {
         // Same again for right
         this.cursors.right.on("down", () => {
             this.handleLaneChange(1);
-
         });
         this.cursors.space.on("down", () => {
             if (this.player.crashed) {
@@ -258,12 +257,7 @@ class Racer extends Phaser.Scene {
         // Increase game speed constantly (or should this be event driven?)
         this.gameSpeed += 0.0001;
 
-        // Wrapping road divider
-        this.dividersGroup.getChildren().forEach((mark) => {
-            if (mark.y - mark.displayHeight / 2 >= this.height) {
-                mark.y -= (this.height + mark.displayHeight * 1.5);
-            }
-        });
+        this.wrapDividers();
 
         this.opponents.getChildren().forEach((opponent) => {
             // Get the vertical distance between opponent and player
@@ -275,18 +269,31 @@ class Racer extends Phaser.Scene {
 
             // Opponent goes out of range (behind player)
             if (opponent.y > this.height * 1) {
-                // "Kill the engine"
-                opponent.engineSFX.setVolume(0);
-                // Delay and then send down a new car
-                // Currently just one at a time
-                this.time.addEvent({
-                    delay: 500,
-                    callback: this.setupOpponent,
-                    args: [opponent],
-                    callbackScope: this,
-                    loop: false
-                });
+                this.wrapOpponent(opponent);
             }
+        });
+    }
+
+    wrapDividers() {
+        // Wrapping road divider
+        this.dividersGroup.getChildren().forEach((mark) => {
+            if (mark.y - mark.displayHeight / 2 >= this.height) {
+                mark.y -= (this.height + mark.displayHeight * 1.5);
+            }
+        });
+    }
+
+    wrapOpponent(opponent) {
+        // "Kill the engine"
+        opponent.engineSFX.setVolume(0);
+        // Delay and then send down a new car
+        // Currently just one at a time
+        this.time.addEvent({
+            delay: 500,
+            callback: this.setupOpponent,
+            args: [opponent],
+            callbackScope: this,
+            loop: false
         });
     }
 

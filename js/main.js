@@ -17,6 +17,7 @@ let config = {
     Racer,
 
     AnimalCrossing,
+    Drag,
     Freeway,
     Ghost,
     Gridlock,
