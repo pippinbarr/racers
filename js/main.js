@@ -21,6 +21,7 @@ let config = {
     Ghost,
     Gridlock,
     OneLaneRoad,
+    OP,
     WrongWay,
   ],
   render: {

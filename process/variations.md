@@ -207,7 +207,7 @@ Turn it into a music thing. Move on a grid/sequence and pick up instruments/drum
 
 There's probably something to this.
 
-## Op Racer
+## OP Racer
 
 When you crash the other car goes flies off the screen dramatically, spinning and exploding. Fun and havoc.
 
