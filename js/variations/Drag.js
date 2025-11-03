@@ -43,6 +43,23 @@ class Drag extends Racer {
         });
     }
 
+    update() {
+        super.update();
+
+        if (this.player.score >= 300) {
+            console.log("scored")
+            this.countdownText.setFontSize(128);
+            if (this.player.y < this.opponent.y) {
+                this.countdownText.text = "WIN";
+            }
+            else {
+                this.countdownText.text = "LOSE";
+            }
+            this.player.speed = 0;
+            this.opponent.setVelocity(0, 0);
+        }
+    }
+
     updateCountdown() {
         this.countdown -= 1;
         if (this.countdown === 0) {
@@ -62,6 +79,7 @@ class Drag extends Racer {
     setupInput() {
         super.setupInput();
         this.cursors.up.on("down", () => {
+            if (this.player.speed !== 0) return;
             if (this.countdown === 0) {
                 this.countdownText.text = "";
                 this.player.speed = this.player.maxSpeed;
