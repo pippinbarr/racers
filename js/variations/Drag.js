@@ -41,13 +41,18 @@ class Drag extends Racer {
                 this.updateCountdown();
             }
         });
+
+        this.player.scoreText.setVisible(false);
+
+        this.raceOver = false;
     }
 
     update() {
         super.update();
 
-        if (this.player.score >= 300) {
-            console.log("scored")
+        // If the player reached the finish line...
+        if (this.player.score >= 100 && !this.raceOver) {
+            this.raceOver = true;
             this.countdownText.setFontSize(128);
             if (this.player.y < this.opponent.y) {
                 this.countdownText.text = "WIN";
@@ -55,8 +60,18 @@ class Drag extends Racer {
             else {
                 this.countdownText.text = "LOSE";
             }
-            this.player.speed = 0;
+
+            this.player.setVelocity(0, 0);
             this.opponent.setVelocity(0, 0);
+            this.player.speed = 0;
+            this.gameSpeed = 0;
+
+            this.tweens.add({
+                targets: [this.player, this.opponent],
+                y: -this.height / 2,
+                duration: 1000,
+                ease: "Sine.easeOut",
+            });
         }
     }
 

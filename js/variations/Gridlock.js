@@ -9,6 +9,7 @@ class Gridlock extends Racer {
         super.create();
 
         this.dividersGroup.setVelocity(0, 0);
+        this.player.speed = 0;
 
         this.startTrafficTimer();
     }
