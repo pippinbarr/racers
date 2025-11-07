@@ -133,6 +133,10 @@ Sounds too complex to me right now, but the idea is crashing starts a "date" whe
 
 Trolley Problem version with a succession of trolley problem situations. Funny if it's continuous driving so you run people over and keep going. Some stuff you wouldn't be able to easily do like the loop track.
 
+### 2025-11-07
+
+Ran into a ton of trouble with the implementation of this which... sucks. It's not a complex idea but running into difficulties around linking a text to the rest of the stuff. May need to use a container.
+
 ## Street Legal
 
 Dumb name but the idea of things like stop signs and crossings so you have to obey the law. This would mandate speed control unless it's automated (which wouldn't be very interesting unless it would)

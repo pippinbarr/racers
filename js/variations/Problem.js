@@ -16,14 +16,17 @@ class Problem extends Racer {
             },
             {
                 label: "A STRANGER",
-                people: 2
+                people: 1
+            }],
+            [{
+                label: "YOUR BEST\nFRIEND",
+                people: 1
+            },
+            {
+                label: "TEN STRANGERS",
+                people: 10
             }],
         ];
-
-        this.scenario = {
-            options: null,
-            texts: []
-        }
     }
 
 
@@ -31,11 +34,14 @@ class Problem extends Racer {
 
         super.create();
 
+        this.scenarioContainer = this.add.container();
+        this.physics.world.enableBody(this.scenarioContainer);
+
         this.leftText = this.add.text(
             this.pixelScale,
             this.pixelScale,
             ``, {
-            font: "24px Commodore",
+            font: "18px Commodore",
             color: "#ff0",
             align: "left",
         })
@@ -45,31 +51,23 @@ class Problem extends Racer {
             this.width / 2 + this.pixelScale,
             this.pixelScale,
             ``, {
-            font: "24px Commodore",
+            font: "18px Commodore",
             color: "#ff0",
             align: "left",
         })
             .setOrigin(0);
 
-        this.deleter = this.physics.add.image(this.width / 2, this.height, 'road-mark')
+        this.deleter = this.physics.add.image(this.width / 2, this.height + this.height / 2, 'road-mark')
             .setScale(this.width, 1);
 
         this.player.scoreText.setVisible(false);
 
         this.problemGroup = this.physics.add.group();
-
-        this.scenario.texts.push(this.add.text(this.laneWidth * 0.5, 0, "PLACEHOLDER", {
-            font: "24px Commodore",
-            color: "#ff0",
-            align: "left",
-        }).setOrigin(0.5));
-        this.scenario.texts.push(this.add.text(this.laneWidth * 1.5, 0, "PLACEHOLDER", {
-            font: "24px Commodore",
-            color: "#ff0",
-            align: "left",
-        }).setOrigin(0.5));
-
         this.chooseScenario();
+
+        this.physics.add.overlap(this.player, this.problemGroup, this.problem, null, this);
+        this.physics.add.overlap(this.problemGroup, this.deleter, this.removal, null, this);
+
     }
 
     update() {
@@ -80,28 +78,37 @@ class Problem extends Racer {
             this.distanceToDecision = 0;
         }
 
-        this.leftText.text = `${this.distanceToDecision} METERS\nAHEAD:\n${this.scenario.options[0].label}`;
-        this.rightText.text = `${this.distanceToDecision} METERS\nAHEAD:\n${this.scenario.options[1].label}`;
-
-        this.problemGroup.getChildren().forEach((person) => {
-            // person.label.setPosition(person.x, person.y + person.displayHeight / 2);
-        });
+        this.leftText.text = `IN ${this.distanceToDecision} METERS:\n${this.leftText.label}`;
+        this.rightText.text = `IN ${this.distanceToDecision} METERS:\n${this.rightText.label}`;
     }
 
     chooseScenario() {
-        this.scenario.options = Phaser.Math.RND.pick(this.scenarios);
-        for (let i = 0; i < this.scenario.options.length; i++) {
-            this.createLane(i, this.scenario.options[i]);
+        console.log("Choosing.")
+        const options = Phaser.Math.RND.pick(this.scenarios);
+        for (let i = 0; i < options.length; i++) {
+            this.createLane(i, options[i]);
         }
+        this.scenarioContainer.body.setVelocity(0, this.player.speed);
+        this.scenarioContainer.y = -this.height;
     }
 
     createLane(lane, option) {
         let x = this.laneWidth * 0.5 + lane * this.laneWidth;
-        let y = this.height / 2;
-        console.log(this.scenario);
+        let y = 0;
 
-        this.scenario.texts[lane].text = option.label;
-        this.scenario.texts[lane].y = y + 100;
+        if (lane === 0) {
+            this.leftText.label = option.label;
+        }
+        else if (lane === 1) {
+            this.rightText.label = option.label;
+        }
+
+        const label = this.add.text(this.laneWidth * 0.5 + lane * this.laneWidth, y + 100, option.label, {
+            font: "18px Commodore",
+            color: "#ff0",
+            align: "left",
+        }).setOrigin(0.5);
+        this.scenarioContainer.add(label);
 
         for (let i = 0; i < option.people; i++) {
             this.createPerson(x, y, lane);
@@ -110,24 +117,31 @@ class Problem extends Racer {
     };
 
     createPerson(x, y, lane) {
-        // const peopleGroup = 
         const person = this.problemGroup.create(x, y, 'person')
             .setScale(this.pixelScale)
             .setRotation(Math.PI / 2)
-            .setVelocity(0, this.player.speed);
 
-        this.physics.add.overlap(this.player, person, this.problem, null, this);
-        this.physics.add.overlap(person, this.deleter, this.removal, null, this);
+        this.scenarioContainer.add(person);
     }
 
     problem(player, person) {
         person.setTint(0xff0000);
-        // person.label.setColor("#ff0000");
         this.crashSFX.play()
     }
 
     removal(deleter, person) {
-        person.label.destroy();
+        console.log(person)
+        this.problemGroup.remove(person);
         person.destroy(true, true);
+        if (this.problemGroup.getChildren().length === 0) {
+            this.scenarioContainer.removeAll(true);
+            this.time.addEvent({
+                delay: 1000,
+                callback: () => {
+                    this.chooseScenario();
+                },
+                callbackScope: this
+            });
+        }
     }
 }
