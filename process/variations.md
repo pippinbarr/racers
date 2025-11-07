@@ -11,8 +11,10 @@ Well, we need an official list and musing on how they would work right? For now 
 - Freeway
 - Ghost
 - Gridlock
+- Low speed chase
 - One lane road
 - OP
+- Problem
 - Wrong way
 
 ## Racer (Codename: [Racer](../&v=racer))
@@ -25,7 +27,7 @@ This is the default. It's still a bit under construction but is essentially a th
 
 Very late but obviously I have a decent working version up.
 
-## Gridlock (Codename: [Gridlock](./&v=gridlock))
+## 👍🏻 Gridlock (Codename: [Gridlock](./&v=gridlock))
 
 Just fill the entire field with cars that don't move. The player is in there in the usual place but if they move left or right they die (kind of weird to move while stopped? But maybe it's funny to have that little agency?)
 
@@ -41,7 +43,7 @@ More complex thing works. Lane changing at very low speed can happen. If you're 
 
 The standard game with a clock counting down the distance. A building on screen somewhere, and a house at the end. Very Desert Bus I suppose. A little animation of a little person getting into the car from the building? An intertistial/"cut-scene"... maybe that's funnier in a weird way? And then it just cuts to the exact usual game... kind of like that.
 
-## One lane road (Codename: [One Lane Road](./&v=onelaneroad))
+## 👍🏻 One lane road (Codename: [One Lane Road](./&v=onelaneroad))
 
 There's only one lane. Unclear how to handle opponents in this case? I guess they could drift back and match your speed and drift back up again? Just for visual interest? Or just one person in front of you really drifting back and forth but never actually hitting you. No steering involved (can you crash into the side?)
 
@@ -51,7 +53,7 @@ Got the basics going here and it's pretty nice. Solved the questions above with 
 
 Just need to work on the visuals a bit, maybe trees along the sides.
 
-## Low speed chase(r) (Codename: [Low Speed Chase](./&v=chase))
+## 👍🏻 Low speed chase(r) (Codename: [Low Speed Chase](./&v=chase))
 
 Three police cars across the lanes behind you (or six?) and just open road in front of you. Do you eventually run out of gas? It counts down and eventually the whole thing just stops and you get arrested.
 
@@ -63,7 +65,7 @@ Got the basic version of this working and... well it's visually satisfying at th
 
 This is one that will kind of need the context of cinematics. Ah yes. Cinematics. Low low res cinematics.
 
-## Drag racer (Codename: [Drag Racer](./&v=drag))
+## 👍🏻 Drag racer (Codename: [Drag Racer](./&v=drag))
 
 You'd need a specific input to "go" which could be "up" (swipe up) so that would work (opens up questions about changing speed in general? Which... I just don't know how I feel about it tbh). But anyway you need to hit "go" at the right moment and that's it you either win or you don't... or maybe it's worse than that and there's just a huge chance element? 
 
@@ -94,7 +96,7 @@ Same game but the cars come pointing at you and fast, you inevitably will crash 
 
 This one basically works. Feels like maybe the opponents should be delayed a bit for it to be funnier? I made the score go down rather than up which I think is a nice touch personally.
 
-## Freeway / n-lane racer (Codename: [Freeway](../&v=freeway))
+## 👍🏻 Freeway / n-lane racer (Codename: [Freeway](../&v=freeway))
 
 Well I've already built the first version of that. Open question on making it single pixel scale though... I think it's worth trying.
 
@@ -102,7 +104,7 @@ Well I've already built the first version of that. Open question on making it si
 
 Late here too, but I do have a working version of this, although I intend to pursue the single-pixel version.
 
-## Ghost racer (Codename: [Ghost](../&v=ghost))
+## 👍🏻 Ghost racer (Codename: [Ghost](../&v=ghost))
 
 You're a ghost car, can't crash, har har. Oh and there's the idea you *can* switch lanes to left and right and... see something else, some ghostly world outside the game, that would be really neat right? I quite love it... could come into view in a fun way too... actually especially with tweening... hmmm, this is a better one than I'd thought. Reminders obviously of Ghost Pong but also of Jostle Parent.
 
@@ -129,13 +131,15 @@ Sub in "awesome graphics" for everything... is that interesting or just stupid t
 
 Sounds too complex to me right now, but the idea is crashing starts a "date" where you have conversational options and can maybe pickup and give gifts and... what? Get married at some point? It's sort of funny but currently seems pretty awkward...
 
-## Racer Problem
+## 👍🏻 Racer Problem
 
 Trolley Problem version with a succession of trolley problem situations. Funny if it's continuous driving so you run people over and keep going. Some stuff you wouldn't be able to easily do like the loop track.
 
 ### 2025-11-07
 
 Ran into a ton of trouble with the implementation of this which... sucks. It's not a complex idea but running into difficulties around linking a text to the rest of the stuff. May need to use a container.
+
+Moment later: I used a container and now there's a "good enough" prototype.
 
 ## Street Legal
 
@@ -239,7 +243,7 @@ Turn it into a music thing. Move on a grid/sequence and pick up instruments/drum
 
 There's probably something to this.
 
-## OP Racer
+## 👍🏻 OP Racer
 
 When you crash the other car goes flies off the screen dramatically, spinning and exploding. Fun and havoc.
 
@@ -251,7 +255,7 @@ Initial version is in place. Works pretty well.
 
 When you go off the left you come on the right etc. And that's it. Perfectly fine.
 
-## Sheep Crossing
+## 👍🏻 Sheep Crossing (now Animal Crossing)
 
 Sheep cross and you have to stop for them. Without speed controls this would have to happen automatically and that is... maybe funnier? Then you CANNOT hit the sheep, you should screech to a halt, they go by, and then you take off again. Pretty good.
 
@@ -259,6 +263,76 @@ Sheep cross and you have to stop for them. Without speed controls this would hav
 
 No other cars. Har.
 
----
+## Rainy Day
 
-Up to rainy day
+Maybe one of those kind of lo-fi "vibe" things where it's more a sensory experience with rain and sound? Or you could have mechanical stuff like sliding out etc. Or both obviously.
+
+## Storm Chaser
+
+Similar/related to rainy but you're gradually catching up with a tornado or something which... what, eventually spins you away into the sky? Not so clear
+
+## Uber
+
+Picking people up and dropping them off? Would the the ability to stop at the right place be a part of it? Linear crazy taxi?
+
+## The Oregon Racer
+
+Interpolating Orgeon Trail stuff. Get dysentery, break your leg, going slower etc. Randomly dying, having to ford a river, etc. etc. Just enough to add a different flavour to the racing. The gravestone would be fun to have in there, which could follow into replays where you see th tombstone.
+
+## Road Trip
+
+Maybe dialog that plays over the journey, chatting to friends, listening to music, podcasts...
+
+## Desert Racer
+
+As in Desert bus. Pushes you to the right unless you keep switching the other way? Other cars? Palette switch. Mostly just boring? Got to be careful with the boring ones?
+
+## The Shining
+
+The music, the trees, the gradual going up into the mountains, ending at the house. Slower? Or at a race speed with fast music? That's funny...
+
+## PONG
+
+Two paddles playing Pong across the screen that can bounce off your car? Or a paddle up high and you're (trying to) bounce back a ball?
+
+Both options sound pretty flawed...
+
+## BREAKOUT
+
+Same thing with BREAKOUT. Doesn't inherently feel like a good idea. 
+
+## Bowling
+
+Running into pins at the end of the lane? But what more than that really? Just because there's lanes...
+
+## Abstract Racer
+
+Same game but everything is broken down into shapes, only the information needed to play the game. (It's already pretty abstract so unsure if this works)
+
+## Stroop test
+
+Cars are labelled with a colour and you're trying to avoid the wrongly labelled ones? Or maybe lanes get labels and you have to make sure you're in the right lane based on the stroop before crazy fast cars come down and crash with you?
+
+## Text adventure
+
+Hilariously break out into a simple parser where you can type `change lane left` etc. and `look` and so on as turns pass and cars get closer
+
+## Directions
+
+Needing to navigate based on landmarks like windmills or something? But that would require turning corners which... does that even make sense in the context I have?
+
+## Solar Power
+
+Day/night cycle and you have a solar panel so you can only move sometimes? Comic timing? Sounds like it may suffer from being boring.
+
+## Pop-ups
+
+Driver distraction, most obviously ads, for Atari Games? Distracting. Pop-ups could be in HTML, moveable... countdowns, etc.
+
+## Getaway
+
+Bank robbery, then fleeing the police through traffic, make the police collide with each other and or other cars?
+
+--
+
+Up to teaches typing
