@@ -41,7 +41,7 @@ More complex thing works. Lane changing at very low speed can happen. If you're 
 
 The standard game with a clock counting down the distance. A building on screen somewhere, and a house at the end. Very Desert Bus I suppose. A little animation of a little person getting into the car from the building? An intertistial/"cut-scene"... maybe that's funnier in a weird way? And then it just cuts to the exact usual game... kind of like that.
 
-## One lane road
+## One lane road (Codename: [One Lane Road](./&v=onelaneroad))
 
 There's only one lane. Unclear how to handle opponents in this case? I guess they could drift back and match your speed and drift back up again? Just for visual interest? Or just one person in front of you really drifting back and forth but never actually hitting you. No steering involved (can you crash into the side?)
 
@@ -51,13 +51,19 @@ Got the basics going here and it's pretty nice. Solved the questions above with 
 
 Just need to work on the visuals a bit, maybe trees along the sides.
 
-## Low speed chase(r)
+## Low speed chase(r) (Codename: [Low Speed Chase](./&v=chase))
 
 Three police cars across the lanes behind you (or six?) and just open road in front of you. Do you eventually run out of gas? It counts down and eventually the whole thing just stops and you get arrested.
 
 The more there are these endings (see two hour commute) the more I'll need a consistent design approach to them. Cut scenes versus texts versus in-game results. I do quite like the idea of really low resolution animations as I haven't done anything like that for ages? Even just like a two frame bouncing thing?
 
-## Drag racer
+### 2025-11-03
+
+Got the basic version of this working and... well it's visually satisfying at the very least (suddenly thinking I need to change the lane-change tween speed as the player slows down? hhhhhh)
+
+This is one that will kind of need the context of cinematics. Ah yes. Cinematics. Low low res cinematics.
+
+## Drag racer (Codename: [Drag Racer](./&v=drag))
 
 You'd need a specific input to "go" which could be "up" (swipe up) so that would work (opens up questions about changing speed in general? Which... I just don't know how I feel about it tbh). But anyway you need to hit "go" at the right moment and that's it you either win or you don't... or maybe it's worse than that and there's just a huge chance element? 
 

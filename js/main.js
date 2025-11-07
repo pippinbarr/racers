@@ -24,6 +24,7 @@ let config = {
     Gridlock,
     OneLaneRoad,
     OP,
+    Problem,
     WrongWay,
   ],
   render: {

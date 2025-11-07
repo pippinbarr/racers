@@ -86,6 +86,8 @@ class Racer extends Phaser.Scene {
         });
 
         this.setupCrashes();
+
+
     }
 
     /**
@@ -333,7 +335,7 @@ class Racer extends Phaser.Scene {
     }
 
     crash(player, opponent) {
-        this.crashSFX.play();
+        // this.crashSFX.play();
         this.physics.pause();
         this.player.engineSFX.setVolume(0);
         this.opponents.getChildren().forEach((opponent) => {

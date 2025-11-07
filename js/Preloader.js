@@ -22,6 +22,7 @@ class Preloader extends Phaser.Scene {
     });
     this.load.image('road-mark', 'assets/images/road-mark.png');
     this.load.image('sheep', 'assets/images/sheep.png');
+    this.load.image('person', 'assets/images/person.png');
 
     // Loading screen visuals
 
