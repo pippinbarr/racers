@@ -345,6 +345,38 @@ Driver distraction, most obviously ads, for Atari Games? Distracting. Pop-ups co
 
 Bank robbery, then fleeing the police through traffic, make the police collide with each other and or other cars?
 
+## Racer Teaches Typing
+
+The Mavis Beacon version of things. Maybe a bit tricky on mobile but also I think fun and funny to bring up the keyboard if I can. Words to change lanes? Words to animate the game itself? That would lead to AI driving stuff. But in principle pretty fun and worth doing right?
+
+## Racer Time
+
+Scheduled races (and even some kind of Grand Prix thing? Accumulating scores?) where you have to show up on time (and maybe in the right place if I want to be a massive dick) in order to race the race.
+
+## Art Maker
+
+Create a trail of the car doing its lane changes. Could even have some sort of surprise like rendering it out to a loop track or something, some sort of spatial revelation? Crashes as some other notation. Other cars. Racer as Paint.
+
+## Meditation
+
+Some kind of guided meditation. Racer-specific meditation. Either specifically about the videogame representation we have, or even like a self-help tape in the car that's referring to stuff you can't actually see or feel... the vibration of the engine, the smell of the leather seats, ...
+
+## Pascal's Racer
+
+Religious symbols or names at the top of the lanes, you race and end up with one of the options. Most obviously when you crash you get the religious outcome of that lane, rather than actually racing *to* that religious outcome which makes less sense. The tension between trying to live and choosing the death experience is nice I think. And then there's the idea of declaring whether or not you were "right" in the end...
+
+## Bullet Time
+
+Racer with Bullet Time. Slow motion triggered as you approach cars for perfect steering... as I write about this it sounds crushingly boring.
+
+## Shopping List
+
+You have a shopping list and the things are on the road and you drive over them to pick them up?? And try not to get things not on the list? I... don't know.
+
+## Racer of Theseus
+
+When you crash part of your car (the part that crashed/contacted) is replaced (new colour) until you no longer have any pieces that are the same. And then the game ends by asserting it's the same car or something? Or asks the question?
+
 --
 
-Up to teaches typing
+Up to Fractal Racer
