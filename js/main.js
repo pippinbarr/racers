@@ -25,6 +25,7 @@ let config = {
     OneLaneRoad,
     OP,
     Problem,
+    Shining,
     WrongWay,
   ],
   render: {

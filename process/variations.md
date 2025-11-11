@@ -15,6 +15,7 @@ Well, we need an official list and musing on how they would work right? For now 
 - One lane road
 - OP
 - Problem
+- Shining
 - Wrong way
 
 ## Racer (Codename: [Racer](../&v=racer))
@@ -277,11 +278,11 @@ Picking people up and dropping them off? Would the the ability to stop at the ri
 
 ## The Oregon Racer
 
-Interpolating Orgeon Trail stuff. Get dysentery, break your leg, going slower etc. Randomly dying, having to ford a river, etc. etc. Just enough to add a different flavour to the racing. The gravestone would be fun to have in there, which could follow into replays where you see th tombstone.
+Interpolating Orgeon Trail stuff. Get dysentery, break your leg, going slower etc. Randomly dying, having to ford a river, etc. etc. Just enough to add a different flavour to the racing. The gravestone would be fun to have in there, which could follow into replays where you see the tombstone.
 
 ## Road Trip
 
-Maybe dialog that plays over the journey, chatting to friends, listening to music, podcasts...
+Maybe dialog that plays over the journey, chatting to friends, listening to music, podcasts, audiobooks, hehe...
 
 ## Desert Racer
 
@@ -290,6 +291,17 @@ As in Desert bus. Pushes you to the right unless you keep switching the other wa
 ## The Shining
 
 The music, the trees, the gradual going up into the mountains, ending at the house. Slower? Or at a race speed with fast music? That's funny...
+
+### 2025-11-11
+
+Starting on this by looking at my previous version of The Shining and I think just taking its tree asset and colours and even the actual path and sequencing. And then I can take the hotel at the end for my "cut scene" as well. So basically just racing past that stuff, no turning, fast, fast music, hey presto? Yeah. Yeah I think so hey presto. Basically it's:
+
+- Lake on left trees on right
+- Trees on left and right
+- Snow trees on left and right
+- End
+
+Doable. Maybe make the car yellow as well. Whee.
 
 ## PONG
 

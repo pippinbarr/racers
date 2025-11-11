@@ -57,10 +57,7 @@ class Racer extends Phaser.Scene {
         this.createOpponents();
 
         // Make road dividers
-        this.dividersGroup = this.physics.add.group();
-        for (let i = 0; i < this.lanes - 1; i++) {
-            this.addRoadMarks(i + 1, this.dividersGroup);
-        }
+        this.createDividers();
 
         // const stepY = this.pixelScale * 4;
         // for (let x = 0; x < this.width; x += this.laneWidth) {
@@ -143,6 +140,13 @@ class Racer extends Phaser.Scene {
         this.player.engineSFX.setRate(2);
         this.player.engineSFX.setDetune(1000);
         this.player.engineSFX.play();
+    }
+
+    createDividers() {
+        this.dividersGroup = this.physics.add.group();
+        for (let i = 0; i < this.lanes - 1; i++) {
+            this.addRoadMarks(i + 1, this.dividersGroup);
+        }
     }
 
     /**
@@ -252,7 +256,7 @@ class Racer extends Phaser.Scene {
             return;
         }
 
-        this.dividersGroup.setVelocity(0, this.player.speed);
+        this.moveDividers();
 
         this.updateScore();
 
@@ -274,6 +278,10 @@ class Racer extends Phaser.Scene {
                 this.wrapOpponent(opponent);
             }
         });
+    }
+
+    moveDividers() {
+        this.dividersGroup.setVelocity(0, this.player.speed);
     }
 
     wrapDividers() {

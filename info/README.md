@@ -15,6 +15,7 @@
 - [One Lane Road](./&v=onelandroad)
 - [OP](./&v=op)
 - [Racer Problem](./&v=problem)
+- [The Shining Racer](./&v=shining)
 - [Wrong Way](./&v=wrongway)
 
 ## Description

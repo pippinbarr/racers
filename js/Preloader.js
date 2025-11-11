@@ -11,6 +11,7 @@ class Preloader extends Phaser.Scene {
 
     this.load.audio('click', [`assets/sounds/click.mp3`]);
     this.load.audio('crash', [`assets/sounds/crash.wav`]);
+    this.load.audio('shining-theme', [`assets/sounds/shining-theme.wav`]);
 
     // this.load.json('strings', `assets/json/${LANG}.json`);
 
@@ -23,6 +24,7 @@ class Preloader extends Phaser.Scene {
     this.load.image('road-mark', 'assets/images/road-mark.png');
     this.load.image('sheep', 'assets/images/sheep.png');
     this.load.image('person', 'assets/images/person.png');
+    this.load.image('tree', 'assets/images/tree.png');
 
     // Loading screen visuals
 
