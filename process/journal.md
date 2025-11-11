@@ -114,3 +114,15 @@ That latter introduces some pretty major complications, but also brings with it 
 Oh and we need honking.
 
 Anyway, this is partly an actual meditation on "what should I do?" but also a kind of meta question about variations and about my own design process. I don't have an answer. I'll probably just keep making variations for a bit and see if my subconscious tries to help me out at all.
+
+## Not as fun (2025-11-11)
+
+Hmmm, energy levels on the project are a bit low at the moment, though I've now got 9 variations in various states of disrepair. The music in The Shining gave me a smile earlier today, but it's a grind for now.
+
+Definitely running into some "expressive capacity" issues with the game I think. (Actually, seeing "honking" above was kind of huge because I feel like that's an oddly powerful idea. Gets into the realms of juice.) I wonder if it's a limitation of the game for real or just a mood thing because life outside game design and development is really hard.
+
+It could be worth building a document about the affordances of the game and sort of seeing where or why I'm getting stuck? There are maybe too many "you can't do anything hahaha" ones that sprang to mind. Though maybe some of the juicier stuff is just later? But it feels like there are just "genres" of variation in a way I don't recall from other projects... and I think that's worth exploring and thinking through more deeply.
+
+So that's a task: list affordances, thinking about meanings, also just interrogate the kinds of patterns I see myself slipping into. Variations as self-help.
+
+Also just need to write up the rest of the variations in the notebook to land on some more fun stuff that I can look to implement.
