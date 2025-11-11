@@ -34,6 +34,8 @@ class Problem extends Racer {
 
         super.create();
 
+        this.player.setDepth(1000);
+
         this.scenarioContainer = this.add.container();
         this.physics.world.enableBody(this.scenarioContainer);
 
@@ -73,17 +75,17 @@ class Problem extends Racer {
     update() {
         super.update();
 
-        this.distanceToDecision -= 1;
-        if (this.distanceToDecision <= 0) {
-            this.distanceToDecision = 0;
-        }
+        // Needs to be clamped.
+        const distanceToDecision = this.player.y - this.scenarioContainer.y;
 
-        this.leftText.text = `IN ${this.distanceToDecision} METERS:\n${this.leftText.label}`;
-        this.rightText.text = `IN ${this.distanceToDecision} METERS:\n${this.rightText.label}`;
+        this.leftText.setVisible(distanceToDecision > this.height);
+        this.rightText.setVisible(distanceToDecision > this.height);
+
+        this.leftText.text = `IN ${distanceToDecision} METERS:\n${this.leftText.label}`;
+        this.rightText.text = `IN ${distanceToDecision} METERS:\n${this.rightText.label}`;
     }
 
     chooseScenario() {
-        console.log("Choosing.")
         const options = Phaser.Math.RND.pick(this.scenarios);
         for (let i = 0; i < options.length; i++) {
             this.createLane(i, options[i]);
