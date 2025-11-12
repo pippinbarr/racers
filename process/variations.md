@@ -377,6 +377,164 @@ You have a shopping list and the things are on the road and you drive over them 
 
 When you crash part of your car (the part that crashed/contacted) is replaced (new colour) until you no longer have any pieces that are the same. And then the game ends by asserting it's the same car or something? Or asks the question?
 
---
+## Fractal/Recursive Racer
 
-Up to Fractal Racer
+There's another race inside the car... somehow. Not really very clearly motivated but always a bit of a classic idea. Zooming out could be interesting too, though in what way I wonder. I suddenly have the kind of despelote image of zooming out from the race to find a car playing the game on its tv which... makes no sense I suppose.
+
+## Rhythm Racer
+
+Crypt of the NecroRacer essentially. Unclear this makes sense, or at least that it would be worth the potential implementation trouble (music, timing, etc.)
+
+## RPG Combat
+
+When you crash it enters a classic JRPG combat screen? And then if you win/lose you go back to the race with that result... (writing this is making me think of how much we need more juice around the crash just in the default game... going red and flashing is pretty tepid, be nice if there's a message, maybe spinning, screenshake, ... should I be juicing the base game?)
+
+## Back Seat Racer
+
+You're not driving, you're selecting conversation options to recommend things. "Slow down", "I think we should be in the left lane" etc. How would this interact with the pace of the game though? Does the driver listen to you?
+
+## Collector
+
+Katamari Racery; when you hit another car is sticks to you and you become a mega-car over time and... aaaaand... what?
+
+## GPS
+
+Kind of the same as Directions, but maybe simpler/better - this was Felix's actual idea. A GPS voice telling you what to do. What about timing? Does it actually help you navigate the race? Given that there are no turns? No acceleration or deceleration? Just lane changes...
+
+## Thelma and Louise
+
+Drive off a cliff. Notably this is odd without acceleration? Maybe not, could be like Drag with just a starting moment. Maybe screenplay instructions on what to say before you go. Play with someone else, hold hands, say the things, hit the button together.
+
+## Chicken
+
+A car coming toward you, decide whether to swerve or not, shame? Guilt? The issue of the amount of visibility down the track may not work?
+
+## The Godfather
+
+Trapped at a tollbooth and shot up?
+
+## Guillotine
+
+Felix so it's surreal. You drive through guillotines and sometimes they chop your car and you drive on with part of a car, slower, until you have nothing left? Just pieces of car? There's something compelling there. A bit like Theseus but different.
+
+---
+
+*At this moment in the notebook I started wondering about acceleration controls. And menu systems for large numbers (if I hit 50 say, which is not looking at all likely). Also was thinking about an unlocking structure for accessing games in the set, opening out as you complete more games.*
+
+---
+
+## Office Racers
+
+Asset swap. people sitting on office chairs. Dollars going down? Or salary going up? Maybe office-related obstacles?
+
+## Match Racer
+
+Some sort of candy crush movement - actually quite like Titanium Court's movement mechanics. Swapping with bits of road instead of steering. Other cars come swapping down. But then what counts as a crash? I guess swapping with a car?
+
+## Curling Racer
+
+Sweeping the track in front of the racer so it can go faster or slower. Maybe the AI is shouting at you like in curling competitions? GO GO GO GO
+
+## Crossy Racer
+
+Creatures/stuff from Crossy Road is crossing the road, you might or might not kill them?
+
+## Death Racer
+
+Death race thing of killing pedestrians. Incisive and powerful commentary on videogame violence...
+
+## As Slow as Possible
+
+Some way to drive really slowly. Life in the Slow Lane. Lanes of different speeds is actually kind of interesting too. But just a reall slow version would be kind of interesting. Might combo with meditation.
+
+## Rat Racer
+
+Pickups that are promotions. Money, marriage, all the Game of Life stuff feverishly collected. And at the end... You Lived or something. Racer of Life.
+
+## Type Racer
+
+Typing in letters or collecting letters that tell a story over time. Missing them fucks up the story?
+
+## Environmental Narrative Racer
+
+Ludonarrative dissonance racer. Pickups with classic Bioshock-esque cassettes.
+
+## Dear Racer
+
+Dear Esther recast into this game. Cutscenes for different bits of that game. Same text?
+
+## Racer Parable
+
+Narrates lane changes that you do or don't obey, leads to different outcomes?
+
+## Scroll Racer
+
+Move by scrolling the road, kinda cool, though breaks away from the normal input mechanics (and opens up the idea that I don't have to use them). Would scrolling secretly just be cool in general.
+
+## Racer of Life
+
+Oh I guess I this idea separately from Rat Racer above. Alan Watts reference.
+
+## Down Racer
+
+Same but down
+
+## Invisible Racer
+
+Blah. Can't see your car, who cares.
+
+## Clip Racer
+
+Pass out of the game. But this is Ghost Racer.
+
+## Meta Racer
+
+As with Pongs. A photo of my computer or similar with the game on the screen playing.
+
+## ET Racer
+
+Falling into a pit and pit minigame. Finding randon shit. Pursued by scientists.
+
+## 1 FPS
+
+The game but 1 FPS
+
+## Breakout Racer
+
+Hmmm, just confused versions of this in the notebook. Unclear what this would be.
+
+## Park Racer
+
+Trying to find a park. Really stupid idea of being able to parallel park by lane changing into it is funny. Maybe you get rated on how far from your destination you are. I actually like this one. Quite Poppy.
+
+## Pixel Racer
+
+1 pixel lanes. Already worked on this.
+
+## Radio Racer
+
+The different lanes play different radio stations (maybe have a dial represented too) and you might prefer lanes based on that. Archival audio?
+
+## Abstract Racer
+
+Already did this. Unclear that the game is not already super abstract?
+
+## By the numbers
+
+Just a display of numbers associated with the game and you have to read the numbers to steer and avoid stuff. Quite a good one.
+
+## Road Trip
+
+Trippy visuals? LSD? Har har?
+
+## Money Racer
+
+Making money, spending it on... what? A shop that sells disadvantages? A shop with nothing in stock?
+
+## Disability
+
+I probably can't make this, but it would be interesting to think in terms of disability and accessibility for the car.
+
+## Back Race
+
+Backing a truck, it's beeping, it's quite slow, other trucks are also slowly backing up. Reverse the controls.
