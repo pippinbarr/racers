@@ -59,15 +59,6 @@ class Racer extends Phaser.Scene {
         // Make road dividers
         this.createDividers();
 
-        // const stepY = this.pixelScale * 4;
-        // for (let x = 0; x < this.width; x += this.laneWidth) {
-        //     for (let y = 0; y < this.height; y += stepY) {
-        //         const mark = this.dividersGroup.create(x, y, 'road-mark');
-        //         mark.setScale(this.pixelScale);
-        //         console.log(x, y)
-        //     }
-        // }
-
         // Make road edges
         this.createEdges();
 
@@ -140,6 +131,9 @@ class Racer extends Phaser.Scene {
         this.player.engineSFX.setRate(2);
         this.player.engineSFX.setDetune(1000);
         this.player.engineSFX.play();
+
+        // Horn
+        this.player.hornSFX = this.sound.add('horn');
     }
 
     createDividers() {
@@ -178,20 +172,17 @@ class Racer extends Phaser.Scene {
         });
         this.cursors.space.on("down", () => {
             if (this.player.crashed) {
-                this.physics.resume();
-                this.sound.mute = false;
-                this.player.crashed = false;
-                this.player.engineSFX.setVolume(0.1);
-                this.player.setTint(0xffffff);
-                this.player.visible = true;
-                this.player.flashingTimer.remove();
-                this.player.score = 0;
-                this.gameSpeed = 1;
-                this.opponents.getChildren().forEach((opponent) => {
-                    this.setupOpponent(opponent);
-                })
+                this.player.hornSFX.pause();
+                this.resetGame();
             }
-        })
+            else {
+                this.player.hornSFX.loop = true;
+                this.player.hornSFX.play();
+            }
+        });
+        this.cursors.space.on("up", () => {
+            this.player.hornSFX.pause();
+        });
     }
 
     handleLaneChange(direction) {
@@ -343,7 +334,8 @@ class Racer extends Phaser.Scene {
     }
 
     crash(player, opponent) {
-        // this.crashSFX.play();
+        this.player.hornSFX.pause();
+
         this.physics.pause();
         this.player.engineSFX.setVolume(0);
         this.opponents.getChildren().forEach((opponent) => {
@@ -359,6 +351,21 @@ class Racer extends Phaser.Scene {
             delay: 250,
             callback: () => { this.player.visible = !this.player.visible },
             loop: true
+        })
+    }
+
+    resetGame() {
+        this.physics.resume();
+        this.sound.mute = false;
+        this.player.crashed = false;
+        this.player.engineSFX.setVolume(0.1);
+        this.player.setTint(0xffffff);
+        this.player.flashingTimer.remove();
+        this.player.setVisible(true);
+        this.player.score = 0;
+        this.gameSpeed = 1;
+        this.opponents.getChildren().forEach((opponent) => {
+            this.setupOpponent(opponent);
         })
     }
 }

@@ -11,6 +11,7 @@ class Preloader extends Phaser.Scene {
 
     this.load.audio('click', [`assets/sounds/click.mp3`]);
     this.load.audio('crash', [`assets/sounds/crash.wav`]);
+    this.load.audio('horn', [`assets/sounds/horn.wav`]);
     this.load.audio('shining-theme', [`assets/sounds/shining-theme.wav`]);
 
     // this.load.json('strings', `assets/json/${LANG}.json`);
