@@ -24,8 +24,16 @@ class Problem extends Racer {
             },
             {
                 label: "TEN STRANGERS",
-                people: 10
+                people: 10,
             }],
+            [{
+                label: "MOM AND DAD",
+                people: 2
+            },
+            {
+                label: "TWENTY STRANGERS",
+                people: 20
+            }]
         ];
     }
 

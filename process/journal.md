@@ -126,3 +126,24 @@ It could be worth building a document about the affordances of the game and sort
 So that's a task: list affordances, thinking about meanings, also just interrogate the kinds of patterns I see myself slipping into. Variations as self-help.
 
 Also just need to write up the rest of the variations in the notebook to land on some more fun stuff that I can look to implement.
+
+## Emo Elmo (2025-11-14)
+
+It's really hard to work on funny stuff when life's so unfunny. Not that life is bad, but just having a serious job where you're needed to be a serious guy... the pivot to making a funny game is not that easy. I can't tell where a certain dourness about making stuff right now ends and where the actual badness of my ideas begins. Which is a pretty normal state of affairs. But unleavened by humour/comedy it's harder to survive.
+
+THAT SAID. I feel lighter today than I have in weeks I think. The octopus arms of my chair job are holding things up instead of dropping them, the suckers feel strong. (I've just been writing poetry in a café, notably, which may explain the weird language here. I'm hearing rhythms and writing to them.)
+
+I have the idea in my head that adding a horn to the game will make a huge difference to everything. And I'm going to choose to believe that's true. A horn is a way for a person in a car to make themselves known to the world, mostly like "fuck you" I suppose, but still an emotional output that they can't really do otherwise other than through "expressive driving." The game Racers lacks expressive capacity. 
+
+The [Problem](../js/variations/Problem.js) variation is strong because it leans into the idea of driving as expression. You choose who to run over, there is subtlety (not much but some). A horn is another way to feel like you're being heard by the game, by its world. It adds a musicality (it could really do that). Are there other expressive qualities of cars I could think of? I have limited affordances for this though eh., especially to the extent I want to keep mobile in the picture which I do.
+
+I thought I would be able to use 50 of the ideas, I had built up an unmerited confidence in the strength of my ideas, but in reading my lists I'm more and more bored by the vast majority of them. I have this feeling that they fall into only 3-4 genres of idea and that's not enough to float the game (the better option at that point is to pick a single genre and *only* do that as with SNAKISMS 2). Just off the top of my head there's basically:
+
+- Lane = decision (problem, pascal, ...)
+- You can't do anything haha (single lane, traffic, driverless car, ...)
+- Social context of the inside of a car = dialog and music (back seat, road trip, karaoke, ...)
+- Visual shifts (the shining, ghost, uber, ...)
+
+And to be fair there's more but I feel like maybe too many of the ideas line up with this and it feels like there's a diluted strength going on.
+
+(Will commit this now, amazingly managed to forget.)
