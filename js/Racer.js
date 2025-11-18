@@ -95,15 +95,23 @@ class Racer extends Phaser.Scene {
         const opponent = group.create(0, 0, sprite);
         opponent.setScale(this.pixelScale);
 
+        opponent.horn = {
+            sfx: undefined,
+            rate: undefined
+        };
+
         this.setupOpponent(opponent);
 
-        // Same for the opponent... this needs to be more modular
         opponent.engineSFX = this.sound.add('click');
         opponent.engineSFX.loop = true;
         opponent.engineSFX.setVolume(0);
         opponent.engineSFX.setRate(opponent.engine.rate);
         opponent.engineSFX.setDetune(opponent.engine.detune);
         opponent.engineSFX.play();
+
+        opponent.horn.sfx = this.sound.add('horn');
+        opponent.horn.sfx.setRate(opponent.horn.rate);
+        opponent.horn.sfx.setLoop(true);
 
         return opponent;
     }
@@ -261,8 +269,16 @@ class Racer extends Phaser.Scene {
             const dy = Phaser.Math.Distance.Between(0, this.player.y, 0, opponent.y);
             // Convert to a percentage in 0..1 (roughly normalized)
             const dyN = Phaser.Math.Percent(dy, 0, this.height)
+
             // Apply distance to volume
             opponent.engineSFX.setVolume((1 - dyN) * 0.5);
+
+            if (dy < 300 && Math.random() < 0.01) {
+                opponent.horn.sfx.play();
+            }
+            if (opponent.horn.sfx.isPlaying && Math.random() < 0.05) {
+                opponent.horn.sfx.pause();
+            }
 
             // Opponent goes out of range (behind player)
             if (opponent.y > this.height * 1) {
@@ -318,6 +334,9 @@ class Racer extends Phaser.Scene {
             detune: 0 + Math.random() * 1000,
             rate: 1 + Math.random() * 2
         };
+
+        opponent.horn.rate = 0.5 + Math.random() * 1;
+
         // Get a new random lane
         const lane = Phaser.Math.Between(1, this.lanes);
         // Reposition on x and y to wrap to the new lane
